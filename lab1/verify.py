@@ -15,10 +15,7 @@ try:
     with open('output.txt', 'r') as f:
         data_cpp = f.read().split()
 
-    if len(data_cpp) == n*n + 1:
-        data_cpp = data_cpp[1:]
-        
-    C_cpp = np.array(data_cpp, dtype=float).reshape(n, n)
+    C_cpp = np.array(data_cpp[-n*n:], dtype=float).reshape(n, n)
 
     if np.allclose(C_python, C_cpp):
         print("Верно. Результаты одинаковые")
